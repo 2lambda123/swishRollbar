@@ -1,7 +1,6 @@
 #/bin/bash
 
-docker rm -f swishServer
-docker rmi -f qb-swishserver
-docker build -t qb-swishserver .
-docker run -p 3030:3030 -dit --name swishServer qb-swishserver
-docker logs -f swishServer
+docker rm -f swishRollbar
+docker rmi -f swishRollbar
+docker build -t rp-swishserver .
+docker run -p 3000:3000 -dit --name swishRollbar rp-swishserver
