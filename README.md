@@ -1,4 +1,7 @@
-# Swish för handel @getswish
+# Swish rollbar error handeling examples
+
+## Payment route
+Simple GET route with a counter to simulate an database connection error and sends a message to rollbar.
 
 ## Docker commands
 ```
