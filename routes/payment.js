@@ -7,33 +7,40 @@ let dateFormat = require('dateformat'),
 
 // Routes 
 const PAYMENT_REQUEST = ('/paymentRequest');
+let counter = 1.0;
 
 router.get(PAYMENT_REQUEST, function(req, res, err) {
 
-    if (err) throw err;
-
-    let response = {
-        "api" :"paymentReqeust",
-        "amount": 100,
-        "status": "PAID"
-    }
-
-    let error = {
-        "api" :"paymentReqeust",
-        "status" : "CANCELED",
-        "message" : "No database connection"
-    }
-    // Simulate an payment request error after a few requests
-    let counter = 0;
-    // If counter divided by 3 is an whole number 
-    if(counter / 3 === Number.isInteger(counter)){
-        res.sendStatus(406);
-        rollbar.error(error);
-    }
-
+    let now = new Date();
+    let dateNow = dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss");
     console.log("\nGET /paymentRequest: \n" + dateNow);
-    rollbar.info(response);
-    res.send(response);
+
+    let response = {};
+
+    if (err) {
+        rollbar.error(err);
+        console.log(err);
+    }
+
+    // Simulate an payment request error after a few request
+    // If counter isent an whole number 
+    if(Number.isInteger(counter)){
+        response.api = "paymentReqeust";
+        response.error = "Database error";
+        response.status = "DECLINED";
+
+        res.status(406);
+        rollbar.error(
+            JSON.stringify(response)
+        );
+    }else{
+        response.api = "paymentReqeust";
+        response.amount = 100;
+        response.status = "PAID";    
+    }
+    counter+= 0.25;
+
+    res.json(response);
 });
 
 module.exports = router;
