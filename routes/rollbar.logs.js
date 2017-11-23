@@ -1,5 +1,3 @@
-require('dotenv').load();
-
 let dateFormat = require('dateformat'),
     express = require('express'),
     rollbar = require("rollbar"),
@@ -7,7 +5,6 @@ let dateFormat = require('dateformat'),
 
 // Routes 
 const ROLLBAR_LOGS = ('/rollbarLogs');
-let counter = 1.0;
 
 router.get(ROLLBAR_LOGS, function(req, res, err) {
 
