@@ -17,11 +17,6 @@ router.get(PAYMENT_REQUEST, function(req, res, err) {
 
     let response = {};
 
-    if (err) {
-        rollbar.error(err);
-        console.log(err);
-    }
-
     // Simulate an payment request error after a few request
     // If counter isent an whole number 
     if(Number.isInteger(counter)){
@@ -29,10 +24,7 @@ router.get(PAYMENT_REQUEST, function(req, res, err) {
         response.error = "Database error";
         response.status = "DECLINED";
 
-        res.status(406);
-        rollbar.error(
-            JSON.stringify(response)
-        );
+        rollbar.error(JSON.stringify(response));
     }else{
         response.api = "paymentReqeust";
         response.amount = 100;
