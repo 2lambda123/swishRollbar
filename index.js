@@ -40,8 +40,10 @@ app.use(expressValidator());
 //======================================
 let health = require('./routes/health');
 let payment = require('./routes/payment');
+let rollbarlogs = require('./routes/rollbar.logs');
 app.use('/api/swishRollbar', health);
 app.use('/api/swishRollbar', payment);
+app.use('/api/swishRollbar', rollbarlogs);
 
 http.createServer(app).listen(port, function(){
     
