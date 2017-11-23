@@ -12,7 +12,7 @@ In your Rollbar configuration you can set rollbar to always catch error's on:
 - Uncaught exceptions
 - UnhandledRejections exceptions
 
-``
+```
 let rollbar = Rollbar.init({ 
     accessToken: process.env.ROLLBAR_SECRET,
     captureUncaught: true,
@@ -21,7 +21,7 @@ let rollbar = Rollbar.init({
         environment: "production"
     }
 });
-``
+```
 
 ## Docker commands
 ```
