@@ -15,7 +15,7 @@ let rollbar = Rollbar.init({
     captureUncaught: true,
     captureUnhandledRejections: true,
     payload: {
-        environment: "swishRollbar"
+        environment: "production"
     }
 });
 
@@ -29,9 +29,9 @@ let corsMiddleware = function(req, res, next) {
     next();
 };
 
+app.use(corsMiddleware);
 app.use(rollbar.errorHandler());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(corsMiddleware);
 app.use(bodyParser.json());
 app.use(expressValidator());
 
@@ -50,5 +50,5 @@ http.createServer(app).listen(port, function(){
 
     console.log("Swish rollbar server started at: http://localhost:3000/api/swishRollbar/health");
     console.log("Date: " + dateNow);
-    rollbar.log("Swish rollbar server started at: http://localhost:3000/api/swishRollbar/health");
+    //rollbar.log("Swish rollbar server started at: http://localhost:3000/api/swishRollbar/health");
 });
