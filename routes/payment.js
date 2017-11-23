@@ -19,11 +19,13 @@ router.get(PAYMENT_REQUEST, function(req, res, err) {
 
     // Simulate an payment request error after a few request
     // If counter isent an whole number 
+    // Every 4th request will generate an database error
     if(Number.isInteger(counter)){
         response.api = "paymentReqeust";
         response.error = "Database error";
         response.status = "DECLINED";
 
+        // Don't forget to parse JSON before sending to Rollbar
         rollbar.error(JSON.stringify(response));
     }else{
         response.api = "paymentReqeust";
