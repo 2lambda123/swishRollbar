@@ -1,5 +1,3 @@
-require('dotenv').load();
-
 let dateFormat = require('dateformat'),
     express = require('express'),
     rollbar = require("rollbar"),
@@ -18,7 +16,6 @@ router.get(PAYMENT_REQUEST, function(req, res, err) {
     let response = {};
 
     // Simulate an payment request error after a few request
-    // If counter isent an whole number 
     // Every 4th request will generate an database error
     if(Number.isInteger(counter)){
         response.api = "paymentReqeust";

@@ -1,5 +1,3 @@
-require('dotenv').load();
-
 let dateFormat = require('dateformat'),
     express = require('express'),
     rollbar = require("rollbar"),
