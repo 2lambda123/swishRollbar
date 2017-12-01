@@ -42,11 +42,12 @@ let health = require('./routes/health');
 let payment = require('./routes/payment');
 let rollbarlogs = require('./routes/rollbar.logs');
 let typeError = require('./routes/typeError');
+let uncaughtException = require('./routes/uncaughtException');
 app.use('/api/swishRollbar', health);
 app.use('/api/swishRollbar', payment);
 app.use('/api/swishRollbar', rollbarlogs);
 app.use('/api/swishRollbar', typeError);
-
+app.use('/api/swishRollbar', uncaughtException);
 
 http.createServer(app).listen(port, function(){
     
