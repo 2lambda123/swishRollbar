@@ -9,6 +9,9 @@ Exampels on different log types you can send to rollbar
 ## Type error route
 Node JS type and syntax error example
 
+## Uncaught exception route
+Same example as abow with type and syntax error but here we don't do a try catch
+
 In your Rollbar configuration you can set rollbar to always catch error's on:
 - Uncaught exceptions
 - UnhandledRejections exceptions
